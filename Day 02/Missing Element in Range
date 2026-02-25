@@ -1,0 +1,28 @@
+class Solution {
+public:
+    vector<int> missingRange(vector<int>& arr, int low, int high) {
+        vector<int> ans;
+        
+        sort(arr.begin(), arr.end());
+        
+        int i = 0;
+        int n = arr.size();
+
+        for (int num = low; num <= high; num++) {
+            while (i < n && arr[i] < num) {
+                i++;
+            }
+
+            if (i < n && arr[i] == num) {
+                i++;
+            } else {
+                ans.push_back(num);
+            }
+        }
+
+        return ans;
+    }
+};
+
+TC - O(N log N + (high − low))
+SC- O(1)
